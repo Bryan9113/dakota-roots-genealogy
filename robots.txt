@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dakota-roots-genealogy.vercel.app/sitemap.xml
