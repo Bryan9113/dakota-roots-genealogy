@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dakota Roots Genealogy | Discover. Preserve. Honor.</title>
+  <meta name="description" content="Dakota Roots Genealogy provides family tree research, ancestor profiles, military and cemetery research, historical maps, and beautiful family history reports." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root{
+  --green:#173b2b;
+  --green-2:#234d39;
+  --cream:#f7f1e4;
+  --cream-2:#eee4d1;
+  --ink:#22231f;
+  --gold:#a57a36;
+  --brown:#654329;
+  --white:#fffdf8;
+  --muted:#6b6b63;
+  --shadow:0 18px 50px rgba(29,32,26,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.65;
+}
+a{color:inherit}
+.container{width:min(1160px,calc(100% - 40px));margin:0 auto}
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(247,241,228,.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(101,67,41,.16);
+}
+.nav-wrap{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;line-height:1}
+.brand-mark{font-size:32px}
+.brand strong{
+  display:block;font-family:"Cormorant Garamond",Georgia,serif;
+  text-transform:uppercase;letter-spacing:.07em;font-size:23px;color:var(--green)
+}
+.brand small{
+  display:block;text-transform:uppercase;letter-spacing:.35em;font-size:10px;margin-top:5px;color:var(--brown)
+}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:600}
+.nav-links a:hover{color:var(--green-2)}
+.nav-cta{background:var(--green);color:white!important;padding:11px 16px;border-radius:7px}
+.menu-toggle{display:none;border:0;background:transparent;font-size:25px;color:var(--green)}
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(165,122,54,.15),transparent 30%),
+    linear-gradient(145deg,#f8f2e7,#efe3ce);
+  border-bottom:1px solid rgba(101,67,41,.12);
+}
+.hero:after{
+  content:"";position:absolute;inset:auto 0 0;height:120px;opacity:.14;
+  background:
+    linear-gradient(155deg,transparent 60%,var(--green) 61% 63%,transparent 64%) 0 0/140px 80px repeat-x;
+}
+.hero-grid{min-height:690px;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center;padding:80px 0 100px;position:relative;z-index:2}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:800;color:#8e6b34;margin:0 0 12px
+}
+.eyebrow.dark{color:var(--green)}
+.hero h1,.section-heading h2,.intro-grid h2,.heritage-copy h2,.about h2,.contact h2{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  margin:0;color:var(--green);line-height:.98
+}
+.hero h1{font-size:clamp(54px,7vw,88px);max-width:760px}
+.hero h1 span{color:var(--brown)}
+.lead{font-size:18px;max-width:670px;color:#474940;margin:28px 0}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:7px;padding:14px 20px;text-decoration:none;font-weight:800;
+  border:1px solid transparent;cursor:pointer;font:inherit;transition:.2s ease
+}
+.btn-primary{background:var(--green);color:white}
+.btn-primary:hover{background:var(--green-2);transform:translateY(-1px)}
+.btn-secondary{border-color:var(--brown);color:var(--brown);background:rgba(255,255,255,.25)}
+.btn-outline{border-color:var(--green);color:var(--green)}
+.full{width:100%}
+.trust-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;color:#5b5b53;font-size:13px}
+.hero-card{position:relative;width:min(420px,100%);height:480px;margin:auto}
+.paper-stack,.report{position:absolute;inset:0;border-radius:3px;background:var(--white);box-shadow:var(--shadow);border:1px solid rgba(101,67,41,.18)}
+.back-one{transform:rotate(4deg) translate(18px,5px);background:#e8dcc4}
+.back-two{transform:rotate(-5deg) translate(-20px,6px);background:#d9c9aa}
+.report{padding:38px;z-index:3;background:
+  linear-gradient(rgba(255,253,248,.92),rgba(255,253,248,.92)),
+  repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(101,67,41,.06) 28px)}
+.report-topline{height:4px;background:var(--green);margin-bottom:25px}
+.report-kicker{text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:var(--gold)}
+.report h2{font:700 42px/1 "Cormorant Garamond",serif;color:var(--brown);margin:5px 0 30px}
+.mini-tree{position:relative;padding:0 10px 30px}
+.node{border:1px solid #bfa77e;background:#fbf7ee;padding:8px 10px;text-align:center;font:600 13px "Cormorant Garamond",serif}
+.node.top{width:58%;margin:auto}
+.tree-line-v{width:1px;height:22px;background:#8e7c5e;margin:auto}
+.tree-line-h{height:1px;background:#8e7c5e;width:70%;margin:auto}
+.tree-children{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:12px}
+.report-lines span{display:block;height:8px;background:#d8cdb9;margin:10px 0;border-radius:10px}
+.report-lines .short{width:65%}
+.report-map{margin-top:30px;background:var(--green);color:white;padding:15px;display:grid;gap:8px;font-size:12px}
+.section{padding:90px 0}
+.intro-strip{background:var(--green);color:white;padding:60px 0}
+.intro-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.intro-grid h2{font-size:52px;color:white}
+.intro-grid p:last-child{font-size:17px;color:#eae4d6}
+.section-heading{max-width:760px;margin-bottom:50px}
+.section-heading.centered{text-align:center;margin-left:auto;margin-right:auto}
+.section-heading h2{font-size:54px}
+.section-heading>p:last-child{color:var(--muted)}
+.cards.four{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.service-card{background:var(--white);padding:28px;border:1px solid rgba(101,67,41,.14);border-radius:12px;box-shadow:0 8px 30px rgba(29,32,26,.05)}
+.service-card .icon{font-size:30px;margin-bottom:14px}
+.service-card h3{font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--green);margin:0 0 8px}
+.service-card p{font-size:14px;color:var(--muted)}
+.heritage{background:var(--green);color:white}
+.heritage-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.heritage-copy h2{font-size:54px;color:white}
+.heritage-copy p{color:#e8e1d4}
+.check-list{list-style:none;padding:0;margin-top:26px}
+.check-list li{margin:12px 0;padding-left:28px;position:relative}
+.check-list li:before{content:"✓";position:absolute;left:0;color:#d6b46f;font-weight:900}
+.heritage-art{position:relative;height:470px}
+.photo,.map-card{position:absolute;border:10px solid #f6efdf;background:#d8c5a4;box-shadow:0 15px 35px rgba(0,0,0,.25)}
+.photo:after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(42,37,31,.55) 0 6%,transparent 6.5%),
+    radial-gradient(circle at 40% 58%,rgba(42,37,31,.35) 0 5%,transparent 5.5%),
+    linear-gradient(145deg,#c4b092,#8f7c63);
+  filter:sepia(.5)
+}
+.photo span,.map-card small{position:absolute;z-index:2;bottom:8px;left:12px;background:rgba(247,241,228,.88);color:#493928;padding:4px 7px;font-size:10px}
+.photo-one{width:235px;height:300px;left:0;top:30px;transform:rotate(-6deg)}
+.photo-two{width:220px;height:270px;right:40px;top:5px;transform:rotate(7deg)}
+.map-card{
+  width:300px;height:190px;left:90px;bottom:0;transform:rotate(2deg);
+  background:
+    linear-gradient(30deg,transparent 49%,rgba(105,80,48,.25) 50% 51%,transparent 52%) 0 0/45px 45px,
+    #d6c49d
+}
+.pin{position:absolute;width:12px;height:12px;border-radius:50%;background:#7c2d23;border:2px solid #f4e9d3;z-index:2}
+.pin-a{left:70px;top:60px}.pin-b{right:60px;bottom:55px}
+.route{position:absolute;left:75px;top:68px;width:145px;height:55px;border-bottom:3px dashed #7c2d23;transform:rotate(12deg)}
+.packages{background:#fbf7ee}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.price-card{background:white;border:1px solid rgba(101,67,41,.18);border-radius:14px;padding:34px;display:flex;flex-direction:column;position:relative;box-shadow:0 10px 30px rgba(29,32,26,.05)}
+.price-card.featured{border:2px solid var(--green);transform:translateY(-10px);box-shadow:var(--shadow)}
+.popular{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--green);color:white;padding:6px 14px;border-radius:99px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.tier{text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:800;color:var(--brown);margin:0}
+.price{font-family:"Cormorant Garamond",serif;font-size:60px;line-height:1;color:var(--green);margin-top:12px;font-weight:700}
+.price span{font-size:28px}
+.price-sub{color:var(--muted)}
+.price-card ul{padding-left:20px;margin:18px 0 30px}
+.price-card li{margin:9px 0}
+.price-card .btn{margin-top:auto}
+.pricing-note{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
+.process{background:#2e251e;color:white}
+.process .section-heading h2{color:white}
+.process .eyebrow{color:#d6b46f}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border-top:1px solid rgba(255,255,255,.25);padding:24px 8px}
+.step span{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#d6b46f;color:#2e251e;font-weight:900}
+.step h3{font:700 28px "Cormorant Garamond",serif;margin:16px 0 6px}
+.step p{color:#ddd3c6;font-size:14px}
+.about{background:#efe5d3}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}
+.about h2{font-size:54px}
+.about p{color:#5f5c55}
+.small-note{font-size:12px!important;border-left:3px solid var(--gold);padding-left:14px}
+.quote-card{background:var(--green);color:white;padding:42px;border-radius:14px;box-shadow:var(--shadow)}
+.quote-mark{font:700 80px/1 "Cormorant Garamond",serif;color:#d6b46f}
+.quote-card p{color:white;font:600 28px/1.25 "Cormorant Garamond",serif}
+.contact{background:linear-gradient(135deg,var(--green),#0e2a1e);color:white}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+.contact h2{font-size:54px;color:white}
+.contact-copy>p{color:#ddd7ca}
+.contact-details{display:grid;gap:12px;margin-top:30px}
+.contact-details a{text-decoration:none;font-weight:700}
+.contact-form{background:#fbf7ee;color:var(--ink);padding:34px;border-radius:14px;display:grid;grid-template-columns:1fr 1fr;gap:18px;box-shadow:var(--shadow)}
+.contact-form label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.contact-form label:nth-of-type(4){grid-column:1/-1}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;margin-top:7px;border:1px solid #c9b99c;background:white;border-radius:6px;padding:12px;font:inherit;color:var(--ink)
+}
+.contact-form button,.form-note{grid-column:1/-1}
+.form-note{font-size:11px;color:var(--muted);margin:0}
+footer{background:#161a16;color:#e6dfd1;padding:38px 0 22px}
+.footer-grid{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.footer-brand strong{color:white}.footer-brand small{color:#b8a88b}
+.footer-links{display:flex;gap:18px}.footer-links a{text-decoration:none}
+.copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:25px;padding-top:18px;font-size:11px;color:#a8a297}
+@media(max-width:900px){
+  .menu-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:78px;left:0;right:0;background:var(--cream);padding:20px;flex-direction:column;border-bottom:1px solid #cdbfa6}
+  .nav-links.open{display:flex}
+  .hero-grid,.heritage-grid,.about-grid,.contact-grid,.intro-grid{grid-template-columns:1fr}
+  .hero-grid{padding-top:55px;gap:30px}
+  .hero-card{height:420px}
+  .cards.four,.pricing-grid,.steps{grid-template-columns:1fr 1fr}
+  .intro-grid{gap:20px}
+}
+@media(max-width:600px){
+  .container{width:min(100% - 28px,1160px)}
+  .section{padding:70px 0}
+  .hero-grid{min-height:auto;padding-bottom:75px}
+  .hero h1{font-size:54px}
+  .section-heading h2,.heritage-copy h2,.about h2,.contact h2,.intro-grid h2{font-size:44px}
+  .hero-card{width:88%;height:390px}
+  .report{padding:26px}
+  .report h2{font-size:34px}
+  .cards.four,.pricing-grid,.steps{grid-template-columns:1fr}
+  .price-card.featured{transform:none}
+  .heritage-art{height:390px}
+  .contact-form{grid-template-columns:1fr;padding:24px}
+  .contact-form label{grid-column:1/-1}
+  .footer-grid{flex-direction:column;align-items:flex-start}
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Dakota Roots Genealogy home">
+        <span class="brand-mark">🌳</span>
+        <span>
+          <strong>Dakota Roots</strong>
+          <small>Genealogy</small>
+        </span>
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#process">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Start Your Search</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-texture"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Discover • Preserve • Honor</p>
+          <h1>Every family has a story.<br><span>Let’s uncover yours.</span></h1>
+          <p class="lead">Dakota Roots Genealogy turns scattered records, old names, and family stories into clear, documented family histories you can understand, keep, and pass down.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Start Your Family Research</a>
+            <a class="btn btn-secondary" href="#packages">View Packages</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ Source-focused research</span>
+            <span>✓ Clear family reports</span>
+            <span>✓ Personal service</span>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Genealogy report preview">
+          <div class="paper-stack back-two"></div>
+          <div class="paper-stack back-one"></div>
+          <div class="report">
+            <div class="report-topline"></div>
+            <p class="report-kicker">Family History Report</p>
+            <h2>Your Family Story</h2>
+            <div class="mini-tree">
+              <div class="node top">Great-Grandparents</div>
+              <div class="tree-line-v"></div>
+              <div class="tree-line-h"></div>
+              <div class="tree-children">
+                <div class="node">Grandfather</div>
+                <div class="node">Grandmother</div>
+              </div>
+            </div>
+            <div class="report-lines">
+              <span></span><span></span><span></span><span class="short"></span>
+            </div>
+            <div class="report-map">
+              <span>Historical maps</span>
+              <span>Military records</span>
+              <span>Cemetery research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-strip">
+      <div class="container intro-grid">
+        <div>
+          <p class="eyebrow dark">More than names and dates</p>
+          <h2>Your ancestors lived real lives.</h2>
+        </div>
+        <p>We research the records behind your family tree and add the historical context that brings your ancestors to life—where they lived, what they did, how they moved, and what the evidence actually proves.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow dark">Research services</p>
+          <h2>What I can help you discover</h2>
+          <p>Choose a focused question or build a larger family history project over multiple generations.</p>
+        </div>
+        <div class="cards four">
+          <article class="service-card">
+            <div class="icon">📜</div>
+            <h3>Record Research</h3>
+            <p>Census, vital, land, church, newspaper, probate, and other historical records.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🎖️</div>
+            <h3>Military History</h3>
+            <p>Service records, units, conflicts, pensions, draft cards, and historical context.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🪦</div>
+            <h3>Cemetery Research</h3>
+            <p>Burial locations, gravestones, cemetery records, obituaries, and family connections.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🗺️</div>
+            <h3>Maps & Migration</h3>
+            <p>Historical maps, land locations, county history, and the movement of families over time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section heritage">
+      <div class="container heritage-grid">
+        <div class="heritage-art">
+          <div class="photo photo-one"><span>1870s</span></div>
+          <div class="photo photo-two"><span>Family records</span></div>
+          <div class="map-card">
+            <span class="pin pin-a"></span>
+            <span class="pin pin-b"></span>
+            <span class="route"></span>
+            <small>Migration & land history</small>
+          </div>
+        </div>
+        <div class="heritage-copy">
+          <p class="eyebrow">A history you can hold onto</p>
+          <h2>We turn research into a family story—not a pile of screenshots.</h2>
+          <p>Your final report can include ancestor profiles, family-tree charts, timelines, record summaries, historical maps, military details, cemetery information, and explanations of conflicting evidence.</p>
+          <ul class="check-list">
+            <li>Clear distinction between confirmed, probable, and unresolved findings</li>
+            <li>Source notes so you know where information came from</li>
+            <li>Historical context that makes the names meaningful</li>
+            <li>Beautiful PDF reports designed to share with family</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="section packages">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow dark">Simple pricing</p>
+          <h2>Choose your research package</h2>
+          <p>Every family is different. These packages provide a starting point, and custom projects are available.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <p class="tier">Starter</p>
+            <div class="price">$99</div>
+            <p class="price-sub">Perfect for getting started.</p>
+            <ul>
+              <li>Up to 3 generations</li>
+              <li>Basic record research</li>
+              <li>Family tree chart</li>
+              <li>Written summary report</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact" data-package="Starter">Choose Starter</a>
+          </article>
+
+          <article class="price-card featured">
+            <div class="popular">Most Popular</div>
+            <p class="tier">Heritage</p>
+            <div class="price">$249</div>
+            <p class="price-sub">For a deeper family story.</p>
+            <ul>
+              <li>Up to 5 generations</li>
+              <li>In-depth record research</li>
+              <li>Timelines & family charts</li>
+              <li>Military & cemetery research</li>
+              <li>Historical context</li>
+              <li>Illustrated PDF report</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact" data-package="Heritage">Choose Heritage</a>
+          </article>
+
+          <article class="price-card">
+            <p class="tier">Legacy</p>
+            <div class="price">$449<span>+</span></div>
+            <p class="price-sub">For a complete family legacy.</p>
+            <ul>
+              <li>5+ generations</li>
+              <li>Multiple family lines</li>
+              <li>Maps, photos & documents</li>
+              <li>Military & migration history</li>
+              <li>Illustrated family-history book</li>
+              <li>Source citations</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact" data-package="Legacy">Choose Legacy</a>
+          </article>
+        </div>
+        <p class="pricing-note">Research results depend on available records. No package guarantees that every family mystery can be solved.</p>
+      </div>
+    </section>
+
+    <section id="process" class="section process">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">How it works</p>
+          <h2>From your question to your family story</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span>1</span><h3>Tell me what you know</h3><p>Share names, dates, places, photos, and the questions you want answered.</p></div>
+          <div class="step"><span>2</span><h3>We build a research plan</h3><p>We identify the strongest records and sources for your family and research goal.</p></div>
+          <div class="step"><span>3</span><h3>We investigate the evidence</h3><p>Records are compared, conflicts are noted, and relationships are evaluated carefully.</p></div>
+          <div class="step"><span>4</span><h3>You receive the story</h3><p>Your findings are organized into a clear, attractive report designed to keep and share.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container about-grid">
+        <div>
+          <p class="eyebrow dark">About Dakota Roots</p>
+          <h2>A South Dakota family dedicated to helping other families find answers.</h2>
+          <p>Dakota Roots Genealogy is owned by <strong>Bryan Olson and Abigail Olson</strong>. We both grew up in South Dakota and are raising our three beautiful children here. Family is at the center of our lives, and our own interest in genealogy showed us how meaningful it can be to discover where you came from and finally find answers to questions that may have been passed down for generations.</p><p>We created Dakota Roots Genealogy to help other families uncover their history, verify family connections, understand the people who came before them, and preserve those discoveries for their children and grandchildren. We are dedicated to providing answers while staying honest about what the records prove and what may still remain unresolved.</p>
+          <p class="small-note">Genealogical research is historical research and does not constitute legal advice or legal proof of inheritance, citizenship, tribal enrollment, or property ownership.</p>
+        </div>
+        <div class="quote-card">
+          <div class="quote-mark">“</div>
+          <p>We know how meaningful it is to finally find an answer about your family. Our goal is to help you discover those answers and preserve them for the generations that come after you.</p>
+          <strong>Bryan &amp; Abigail Olson<br>Dakota Roots Genealogy</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Start your search</p>
+          <h2>What would you like to learn about your family?</h2>
+          <p>Send the basics below and we’ll have the information needed to discuss a research plan with you.</p>
+          <div class="contact-details">
+            <a href="mailto:bryanolson1113@gmail.com">✉ bryanolson1113@gmail.com</a>
+            <a href="tel:+16059096650">☎ 605-909-6650</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <label>
+            Your name
+            <input type="text" id="name" required placeholder="Full name">
+          </label>
+          <label>
+            Email
+            <input type="email" id="email" required placeholder="you@example.com">
+          </label>
+          <label>
+            Package
+            <select id="package">
+              <option value="Not sure yet">Not sure yet</option>
+              <option value="Starter">Starter — $99</option>
+              <option value="Heritage">Heritage — $249</option>
+              <option value="Legacy">Legacy — $449+</option>
+              <option value="Custom">Custom project</option>
+            </select>
+          </label>
+          <label>
+            What are you hoping to learn?
+            <textarea id="message" rows="5" required placeholder="Tell me what you know and what you want to discover..."></textarea>
+          </label>
+          <button class="btn btn-primary full" type="submit">Email Dakota Roots</button>
+          <p class="form-note">This form opens your email app with your information filled in. No information is stored on this website.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="brand footer-brand">
+        <span class="brand-mark">🌳</span>
+        <span><strong>Dakota Roots</strong><small>Genealogy</small></span>
+      </div>
+      <p>Discover • Preserve • Honor</p>
+      <div class="footer-links">
+        <a href="mailto:bryanolson1113@gmail.com">Email</a>
+        <a href="tel:+16059096650">Call/Text</a>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> Dakota Roots Genealogy. All rights reserved.</div>
+  </footer>
+
+  <script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+
+toggle?.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(open));
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => nav.classList.remove('open'));
+});
+
+document.querySelectorAll('[data-package]').forEach(link => {
+  link.addEventListener('click', () => {
+    const select = document.getElementById('package');
+    if (select) select.value = link.dataset.package;
+  });
+});
+
+document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const pkg = document.getElementById('package').value;
+  const message = document.getElementById('message').value.trim();
+
+  const subject = encodeURIComponent(`Genealogy inquiry from ${name} — ${pkg}`);
+  const body = encodeURIComponent(
+`Hello Dakota Roots Genealogy,
+
+My name is ${name}.
+My email is ${email}.
+Package interest: ${pkg}
+
+What I am hoping to learn:
+${message}
+
+Thank you.`
+  );
+  window.location.href = `mailto:bryanolson1113@gmail.com?subject=${subject}&body=${body}`;
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+</script>
+</body>
+</html>
