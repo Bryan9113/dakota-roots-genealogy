@@ -1,0 +1,17 @@
+{
+  "name": "Dakota Roots Genealogy",
+  "short_name": "Dakota Roots",
+  "description": "Family history and genealogy research services from South Dakota.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f1e4",
+  "theme_color": "#173b2b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
