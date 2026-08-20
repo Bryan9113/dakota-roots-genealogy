@@ -1,46 +1,79 @@
 # Rootline Overnight Restoration Status — 20 Aug 2026
 
-## Deployment created
-Production alias created through the connected Vercel deployment API:
+## Current production deployment
+A fresh production bundle was created from the connected Vercel deployer during the latest restoration run.
+
+Production alias:
 
 `https://rootline-ai-genealogy-bryanolson1113-5546s-projects.vercel.app`
 
-Unique production deployment URL returned by the deployment API:
+Unique deployment URL:
 
-`https://rootline-ai-genealogy-80b7bbqrl-bryanolson1113-5546s-projects.vercel.app`
+`https://rootline-ai-genealogy-fjop0ppop-bryanolson1113-5546s-projects.vercel.app`
 
-The deployment API reported the production build as READY when created. Independent browser/API verification is still required before this URL should be described as fully production-ready.
+Deployment creation returned `READY`. The deployment API's later lookup endpoint is not resolving this deployment from the connected team, so independent browser verification is still required before calling the URL fully verified.
+
+## Canonical design direction
+The approved Rootline AI Genealogy mockup is the visual target:
+- black / deep-charcoal premium shell
+- gold Rootline AI Genealogy branding
+- sophisticated purple AI glow
+- warm cream evidence/dashboard cards
+- hero: **Your Family. Our Mission. AI-Powered.**
+- AI is the primary product identity, not a buried assistant
+- desktop navigation: Home, Tree, Discover, AI Research, Records, DNA, Military, More
+- iPhone-first responsive behavior without losing the desktop visual identity
 
 ## Data foundation
-The current build uses the validated Bryan Olson master GEDCOM as its data source target:
-- 2,284 individuals
-- 1,161 families
+The source archive contains the validated Bryan Olson master GEDCOM:
+- **2,284 individuals**
+- **1,161 families**
 - GEDCOM 5.5.1
 - UTF-8
 
-The master tree was compressed for client loading so a single-file static proof build can load the full person/relationship graph rather than demo people.
+The production loader uses the compressed master GEDCOM in `rootline-app/payload/master-tree.ged.gz.b64` and the preserved V5 application payload in `rootline-app/payload/v5/00.txt` through `07.txt`.
 
-## Current production proof-build features
-- Approved black/gold/purple/cream Rootline AI visual direction
-- Hero: “Your Family. Our Mission. AI-Powered.”
-- Desktop navigation + iPhone bottom navigation
-- Searchable master-tree interface
-- Selected-person context and relationships
-- Person-centered research planner
-- Discover links prefilled for selected ancestor to public web, FamilySearch, Find a Grave, NARA, Library of Congress and Google Books
-- Military, DNA, Migration, Health, Famous Connections, Oral History, Document Analyzer and Research OS entry points
-- Evidence-state model and provenance-oriented Records screen
-- First-run owner-password gate stored locally in the browser
-- Clear disclosure where secure server-side functionality is still required
+The loader parses the full GEDCOM person/family graph in the browser, builds parent/spouse/child links, then overlays curated V5 research evidence onto matching master profiles rather than replacing the master tree with demo people.
 
-## Never fake these functions
-The static proof build does **not** claim that autonomous AI web research, OCR/vision extraction, server-grade multi-device authentication, or private cloud collaboration are live. Those require a secure backend plus appropriate AI/search/provider credentials and storage/auth infrastructure.
+## Preserved / integrated Rootline V5 capabilities
+- Owner authentication UI and private-family access concepts
+- Family tree, person profiles and relationship links
+- Search / Discover with person context
+- Records/evidence library
+- Rootline AI conversation workspace
+- Evidence audit and evidence matrix
+- Identity-collision research
+- DNA workspace
+- Military service workspace
+- Family health history
+- Migration / timeline research
+- Famous-connections research with rejected-route preservation
+- Relationship finder
+- Explainable hints
+- Cluster/FAN research
+- Historical context research
+- Research watchlist
+- Citations
+- Oral-history recording/transcription workflow
+- Documentary mode
+- Collaboration/privacy workflow
+- GEDCOM and backup/export tools
 
-## Highest-priority verification items
-1. Confirm the deployed page is externally reachable and its JavaScript loads without errors.
-2. Confirm the embedded master tree decodes to exactly 2,284 people on Safari/iPhone.
-3. Confirm owner first-run password flow.
-4. Confirm Tree search, selected-person relationships, Discover, and AI Research navigation.
-5. Verify responsive layout against the approved visual mockup.
-6. Continue restoring richer V5 local modules rather than leaving them as visual entry points.
-7. Add a secure server backend for genuine autonomous AI/web research and production-grade accounts.
+## Latest local masterpiece build
+A full local V5-derived build was also generated with the master GEDCOM embedded as 2,284 people / 1,161 families and with the approved 2030 visual information architecture. JavaScript syntax validation passed for all script blocks. This artifact is being preserved separately as a recovery/build source even though the smaller hosted loader is preferred for deployment efficiency.
+
+## Important truth boundary
+The static proof build must **not** claim that autonomous deep-web AI research, live OCR/vision extraction, server-grade multi-device authentication, or private cloud collaboration are already production-live. Those require a secure backend plus AI/search/provider credentials and storage/auth infrastructure.
+
+The current V5 AI UI is web-search-aware and contains evidence-first prompts/workflows, but a genuine autonomous research backend remains the main production-service blocker.
+
+## Final verification checklist
+1. Verify production URL is externally reachable.
+2. Verify the V5 payload starts without JavaScript/runtime errors.
+3. Verify the master GEDCOM decodes to exactly 2,284 people and family relationships are navigable.
+4. Verify owner login flow.
+5. Verify Home / Tree / Discover / AI Research / Records navigation.
+6. Verify DNA, Military, Health, Migration, Famous, Evidence Matrix and Oral History tools open.
+7. Verify iPhone viewport layout and safe-area behavior.
+8. Verify GEDCOM/backup export flows.
+9. Verify at least one real backend AI/web research path before describing autonomous AI research as live.
