@@ -7,11 +7,11 @@ Production alias:
 
 `https://rootline-ai-genealogy-bryanolson1113-5546s-projects.vercel.app`
 
-Unique deployment URL:
+Latest unique direct-deploy proof URL:
 
-`https://rootline-ai-genealogy-fjop0ppop-bryanolson1113-5546s-projects.vercel.app`
+`https://rootline-ai-genealogy-live-g58aide4e.vercel.app`
 
-Deployment creation returned `READY`. The deployment API's later lookup endpoint is not resolving this deployment from the connected team, so independent browser verification is still required before calling the URL fully verified.
+The deployer accepted the production bundle. The connected deployment lookup/fetch endpoint is currently inconsistent and returns not-found/unable-to-share for deployments it has just created, so independent browser verification is still required before calling this alias fully verified.
 
 ## Canonical design direction
 The approved Rootline AI Genealogy mockup is the visual target:
@@ -59,13 +59,29 @@ The loader parses the full GEDCOM person/family graph in the browser, builds par
 - Collaboration/privacy workflow
 - GEDCOM and backup/export tools
 
+## Real model-backed AI backend work
+Two server endpoints are now committed at the repository root:
+
+- `api/rootline-health.js`
+- `api/rootline-chat.js`
+
+`rootline-chat` is an evidence-first genealogy reasoning endpoint. It sends selected-person context and supplied evidence to Vercel AI Gateway, instructs the model to separate Proven/Direct, Strong, Possible, Unverified and Rejected conclusions, surface conflicts and identity collisions, preserve citations, prefer original records and protect living-person privacy.
+
+Authentication is designed to use `AI_GATEWAY_API_KEY` when explicitly configured or Vercel's `VERCEL_OIDC_TOKEN` automatically when available. This avoids hard-coding a provider secret in the client.
+
+After the backend commit, all three Git-connected Vercel status checks returned **success**, confirming the new functions build successfully in the connected Vercel projects. Runtime confirmation that the deployed project actually receives a usable OIDC token is still required before the model-backed endpoint is described as live.
+
 ## Latest local masterpiece build
-A full local V5-derived build was also generated with the master GEDCOM embedded as 2,284 people / 1,161 families and with the approved 2030 visual information architecture. JavaScript syntax validation passed for all script blocks. This artifact is being preserved separately as a recovery/build source even though the smaller hosted loader is preferred for deployment efficiency.
+A full local V5-derived build was generated with the master GEDCOM embedded as 2,284 people / 1,161 families and with the approved 2030 visual information architecture. JavaScript syntax validation passed for every script block. The artifact is approximately 1.0 MB uncompressed and compresses to about 123 KB; it is preserved as a recovery/build source while the smaller hosted loader remains the deployment-efficient version.
 
 ## Important truth boundary
-The static proof build must **not** claim that autonomous deep-web AI research, live OCR/vision extraction, server-grade multi-device authentication, or private cloud collaboration are already production-live. Those require a secure backend plus AI/search/provider credentials and storage/auth infrastructure.
+Do **not** claim autonomous deep-web research is live merely because a model endpoint exists. A true deep-web workflow also needs a real search/archive retrieval layer, permitted source access, PDF/image/document retrieval, and citation-preserving ingestion. Paywalled or account-restricted genealogy services require authorized access rather than scraping around their controls.
 
-The current V5 AI UI is web-search-aware and contains evidence-first prompts/workflows, but a genuine autonomous research backend remains the main production-service blocker.
+The immediate goal is therefore:
+1. verify the model-backed endpoint at runtime;
+2. connect the approved Rootline AI interface to it;
+3. add real search/retrieval providers and research logging behind the same evidence model;
+4. keep every proposed tree change reviewable by the owner.
 
 ## Final verification checklist
 1. Verify production URL is externally reachable.
@@ -76,4 +92,6 @@ The current V5 AI UI is web-search-aware and contains evidence-first prompts/wor
 6. Verify DNA, Military, Health, Migration, Famous, Evidence Matrix and Oral History tools open.
 7. Verify iPhone viewport layout and safe-area behavior.
 8. Verify GEDCOM/backup export flows.
-9. Verify at least one real backend AI/web research path before describing autonomous AI research as live.
+9. Verify `api/rootline-health` runtime AI Gateway authentication.
+10. Verify a real `api/rootline-chat` model response before describing Rootline AI as live.
+11. Keep external web/archive searching labeled as architecture/next layer until a genuine retrieval path is verified.
