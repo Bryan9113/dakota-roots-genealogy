@@ -76,8 +76,7 @@ async function gunzipB64Text(b64){
 
     stage='loading master family tree';
     status('Loading 2,284-person master family tree…');
-    const gedParts=await Promise.all([...Array(3)].map((_,i)=>fetchText('./payload/ged/'+String(i).padStart(2,'0')+'.txt')));
-    const gedB64=stitch(gedParts);
+    const gedB64=await fetchText('./payload/master-tree.ged.gz.b64');
     stage='decoding master family tree';
     status('Decoding master family tree…');
     const ged=await gunzipB64Text(gedB64);
@@ -85,7 +84,7 @@ async function gunzipB64Text(b64){
     const gedUrl=URL.createObjectURL(new Blob([ged],{type:'text/plain;charset=utf-8'}));
     html=html.replaceAll('./data/Bryan_Olson_MASTER_ALL_USABLE_FAMILY_2026.ged',gedUrl);
     html=html.replace(/const __OWNER_SHA256__ = '[0-9a-f]+';/,`const __OWNER_SHA256__ = '${OWNER_HASH}';`);
-    html=html.replace('</head>','<meta name="rootline-build" content="2026-08-20-payload-fix"></head>');
+    html=html.replace('</head>','<meta name="rootline-build" content="2026-08-20-master-source-fix"></head>');
 
     stage='opening Rootline';
     status('Opening Rootline…');
