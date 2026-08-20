@@ -35,8 +35,9 @@ const errEl=document.getElementById('err');
 function status(s){statusEl.textContent=s}
 async function fetchText(path){
   const r=await fetch(path,{cache:'no-store'});
-  if(!r.ok)throw Error('Could not load '+path+' ('+r.status+')');
-  return r.text();
+  const text=await r.text();
+  if(!r.ok)throw Error(text || ('Could not load '+path+' ('+r.status+')'));
+  return text;
 }
 function stitch(parts){
   if(!parts.length)return '';
@@ -74,17 +75,15 @@ async function gunzipB64Text(b64){
     status('Decoding Rootline application…');
     let html=await gunzipB64Text(appB64);
 
-    stage='loading master family tree';
+    stage='loading master family tree from server';
     status('Loading 2,284-person master family tree…');
-    const gedB64=await fetchText('./payload/master-tree.ged.gz.b64');
-    stage='decoding master family tree';
-    status('Decoding master family tree…');
-    const ged=await gunzipB64Text(gedB64);
+    const ged=await fetchText('/api/rootline-tree');
+    if(!/\b0\s+HEAD\b/.test(ged) || !/\b0\s+TRLR\b/.test(ged)) throw Error('The server returned an incomplete GEDCOM file.');
 
     const gedUrl=URL.createObjectURL(new Blob([ged],{type:'text/plain;charset=utf-8'}));
     html=html.replaceAll('./data/Bryan_Olson_MASTER_ALL_USABLE_FAMILY_2026.ged',gedUrl);
     html=html.replace(/const __OWNER_SHA256__ = '[0-9a-f]+';/,`const __OWNER_SHA256__ = '${OWNER_HASH}';`);
-    html=html.replace('</head>','<meta name="rootline-build" content="2026-08-20-master-source-fix"></head>');
+    html=html.replace('</head>','<meta name="rootline-build" content="2026-08-20-server-tree-decode"></head>');
 
     stage='opening Rootline';
     status('Opening Rootline…');
