@@ -6,6 +6,18 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/rootline-app",
+      "has": [{"type":"header","key":"user-agent","value":".*iPhone.*"}],
+      "destination": "/rootline-app/iphone.html"
+    },
+    {
+      "source": "/rootline-app/",
+      "has": [{"type":"header","key":"user-agent","value":".*iPhone.*"}],
+      "destination": "/rootline-app/iphone.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
