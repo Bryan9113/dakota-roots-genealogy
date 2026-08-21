@@ -1,0 +1,11 @@
+/* Rootline mobile golden-tree visibility tune — 2026-08-20 */
+@media (max-width:850px){
+.app::before{right:-48vw!important;top:110px!important;width:150vw!important;height:1050px!important;opacity:.17!important;background-position:center top!important;filter:drop-shadow(0 0 28px rgba(229,193,119,.10))}
+.heroai{position:relative;overflow:hidden;isolation:isolate}
+.heroai::after{content:"";position:absolute;z-index:-1;width:92%;height:135%;right:-18%;bottom:-38%;background:url('golden-tree.svg') center/contain no-repeat;opacity:.20;filter:drop-shadow(0 0 20px rgba(229,193,119,.10));pointer-events:none}
+.card{background:linear-gradient(145deg,rgba(21,19,15,.90),rgba(11,11,10,.91))}
+}
+@media (max-width:520px){
+.app::before{right:-62vw!important;top:150px!important;width:178vw!important;height:1120px!important;opacity:.19!important}
+.heroai::after{width:115%;height:145%;right:-30%;bottom:-45%;opacity:.23}
+}
