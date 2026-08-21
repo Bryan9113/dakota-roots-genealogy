@@ -1,0 +1,61 @@
+(()=>{
+'use strict';
+const PAYLOAD='payload/master-tree.ged.gz.b64';
+const state={loaded:false,loading:null,people:new Map(),families:new Map(),selected:null};
+const norm=s=>(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const cleanName=s=>(s||'').replace(/\//g,'').replace(/\s+/g,' ').trim();
+const year=s=>{const m=(s||'').match(/(?:^|\D)(1[5-9]\d{2}|20\d{2})(?:\D|$)/);return m?m[1]:''};
+function displayLife(p){if(!p)return'';const b=year(p.birth),d=year(p.death);if(d)return [b,d].filter(Boolean).join('–');if(b&&+b<1935)return `b. ${b}`;return''}
+async function gunzipBase64(url){
+ const r=await fetch(url,{cache:'force-cache'});if(!r.ok)throw new Error('tree payload unavailable');
+ const b64=(await r.text()).replace(/\s+/g,'');const bin=atob(b64);const bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+ if(!('DecompressionStream'in window))throw new Error('gzip not supported');
+ const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+ return await new Response(stream).text();
+}
+function parseGed(text){
+ const people=new Map(),families=new Map();let rec=null,kind='',event='';
+ for(const raw of text.split(/\r?\n/)){
+  let m=raw.match(/^0 @([^@]+)@ (INDI|FAM)$/);if(m){kind=m[2];rec=kind==='INDI'?{id:m[1],name:'',birth:'',death:'',famc:''}:{id:m[1],husb:'',wife:'',children:[]};(kind==='INDI'?people:families).set(rec.id,rec);event='';continue}
+  if(!rec)continue;
+  const p=raw.match(/^(\d+)\s+(\S+)(?:\s+(.*))?$/);if(!p)continue;const level=+p[1],tag=p[2],val=(p[3]||'').trim();
+  if(kind==='INDI'){
+   if(level===1){event='';if(tag==='NAME')rec.name=cleanName(val);else if(tag==='FAMC')rec.famc=val.replace(/@/g,'');else if(tag==='BIRT')event='BIRT';else if(tag==='DEAT')event='DEAT'}
+   else if(level===2&&tag==='DATE'){if(event==='BIRT')rec.birth=val;else if(event==='DEAT')rec.death=val}
+  }else if(kind==='FAM'&&level===1){if(tag==='HUSB')rec.husb=val.replace(/@/g,'');else if(tag==='WIFE')rec.wife=val.replace(/@/g,'');else if(tag==='CHIL')rec.children.push(val.replace(/@/g,''))}
+ }
+ state.people=people;state.families=families;
+}
+async function load(){if(state.loaded)return state;if(state.loading)return state.loading;state.loading=(async()=>{const txt=await gunzipBase64(PAYLOAD);parseGed(txt);state.loaded=true;return state})().catch(e=>{console.warn('Rootline ancestry index:',e);return state});return state.loading}
+function parentsOf(id){const p=state.people.get(id);if(!p||!p.famc)return[];const f=state.families.get(p.famc);return f?[f.husb,f.wife].map(x=>state.people.get(x)||null):[]}
+function slotsFor(id){const root=state.people.get(id)||null;const [father,mother]=root?parentsOf(root.id):[];const [ff,fm]=father?parentsOf(father.id):[];const [mf,mm]=mother?parentsOf(mother.id):[];return{root,father,mother,ff,fm,mf,mm}}
+function personByName(name){const n=norm(name);let exact=null,contains=null;for(const p of state.people.values()){const pn=norm(p.name);if(pn===n){exact=p;break}if(!contains&&(pn.includes(n)||n.includes(pn)))contains=p}return exact||contains}
+function plaqueHTML(slot,p){if(!p)return`<button class="tree-plaque tree-plaque-${slot} empty" data-slot="${slot}" type="button"><span>Unknown</span></button>`;return`<button class="tree-plaque tree-plaque-${slot}" data-person-id="${p.id}" data-slot="${slot}" type="button"><strong>${escapeHtml(p.name)}</strong>${displayLife(p)?`<small>${displayLife(p)}</small>`:''}</button>`}
+function escapeHtml(s){return(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderPlaques(container,id){if(!container)return;const s=slotsFor(id);container.innerHTML=['root','father','mother','ff','fm','mf','mm'].map(k=>plaqueHTML(k,s[k])).join('');container.querySelectorAll('[data-person-id]').forEach(b=>b.addEventListener('click',()=>selectById(b.dataset.personId,true)))}
+function ensureAuthPlaques(){const auth=document.getElementById('auth');if(!auth)return null;let box=auth.querySelector('.auth-tree-plaques');if(!box){box=document.createElement('div');box.className='auth-tree-plaques';box.setAttribute('aria-label','Family names on decorative tree');auth.appendChild(box)}return box}
+function ensureReferenceHome(){const home=document.getElementById('home');if(!home)return null;let wrap=home.querySelector('.iphone-reference-home');if(wrap)return wrap;wrap=document.createElement('div');wrap.className='iphone-reference-home';wrap.innerHTML=`
+<section class="ref-hero">
+ <div class="ref-brand"><span class="ref-logo-tree"></span><div><b>ROOTLINE</b><small>AI GENEALOGY</small></div></div>
+ <div class="ref-copy"><h1>Your Family.<br>Our Mission.<br><em>AI-Powered.</em></h1><div class="ref-rule">◇</div><p>Evidence-first genealogy. Build your family tree, analyze DNA, uncover military history, manage records, and publish your story—together in one private workspace.</p>
+ <div class="ref-chips"><span>● Owner portal</span><span>♢ Evidence confidence</span><span>♧ 2,284-person master tree</span><span>▯ Mobile ready</span></div>
+ <blockquote>“Rootline AI Genealogy brings my entire research world together. It’s secure, smart, and built for serious family historians.”<footer>— Verified Owner &nbsp; ★★★★★</footer></blockquote></div>
+ <div class="ref-tree-art"><div class="ref-tree-plaques"></div><div class="ref-ribbon">Our Past. Our Present. Their Legacy.</div></div>
+</section>
+<section class="ref-dashboard">
+ <div class="ref-dash-head"><div class="ref-mini-brand"><span class="ref-logo-tree"></span><b>ROOTLINE</b></div><label class="ref-search">⌕ <input placeholder="Search people, places, records…" aria-label="Search people, places, records"></label></div>
+ <div class="ref-dash-grid">
+  <button class="ref-card ref-overview" type="button" data-go="tree"><small>Your Overview</small><strong>2,284</strong><span>People in master tree</span><div class="ref-stats"><b>7,842<small>Records</small></b><b>1,326<small>Documents</small></b><b>96%<small>Evidence confidence</small></b></div></button>
+  <button class="ref-card" type="button" data-go="research"><small>Recent Activity</small><ul><li>▣ Added record: 1940 Census <i>Today</i></li><li>♣ DNA match confirmed <i>Today</i></li><li>♟ Military record attached <i>Yesterday</i></li><li>▣ Story published <i>2 days ago</i></li></ul></button>
+  <button class="ref-card" type="button" data-go="research"><small>Research by Location</small><div class="ref-map"><i></i><i></i><i></i><i></i></div><span class="ref-link">Explore Map</span></button>
+  <button class="ref-card" type="button" data-go="research"><small>DNA Overview</small><div class="ref-dna"><div class="ref-ring"></div><strong>42</strong><span>DNA Matches</span></div><p>England & NW Europe&nbsp; 68%<br>Scotland&nbsp; 18%<br>Ireland&nbsp; 14%</p></button>
+ </div>
+</section>`;
+ home.prepend(wrap);wrap.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>window.showView&&showView(b.dataset.go)));const input=wrap.querySelector('.ref-search input');input?.addEventListener('change',()=>{const p=personByName(input.value);if(p)selectById(p.id,true)});return wrap}
+function renderEverywhere(){if(!state.selected)return;const auth=ensureAuthPlaques();renderPlaques(auth,state.selected);const ref=ensureReferenceHome();renderPlaques(ref?.querySelector('.ref-tree-plaques'),state.selected);const p=state.people.get(state.selected);const ribbon=ref?.querySelector('.ref-ribbon');if(ribbon&&p)ribbon.textContent=`${p.name} • Their Roots. Their Story.`}
+function selectById(id,goHome=false){if(!state.people.has(id))return;state.selected=id;renderEverywhere();if(goHome&&window.showView){showView('home');setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),20)}}
+async function selectByName(name,goHome=false){await load();const p=personByName(name);if(p)selectById(p.id,goHome);return p}
+async function init(){ensureReferenceHome();await load();let p=personByName('Bryan Olson')||personByName('Bryan Fischer Olson')||[...state.people.values()][0];if(p)selectById(p.id,false);document.querySelectorAll('.person').forEach(card=>{card.style.cursor='pointer';card.addEventListener('click',()=>{const name=card.querySelector('b')?.textContent||'';selectByName(name,true)})})}
+window.RootlineFamilyTree={load,selectPersonById:selectById,selectPersonByName:selectByName,getSelected:()=>state.people.get(state.selected)||null};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
