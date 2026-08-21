@@ -4,18 +4,16 @@
       "source": "/Dakota-Roots-Genealogy.html",
       "destination": "/",
       "permanent": true
-    }
-  ],
-  "rewrites": [
+    },
     {
       "source": "/rootline-app",
-      "has": [{"type":"header","key":"user-agent","value":".*iPhone.*"}],
-      "destination": "/rootline-app/iphone.html"
+      "destination": "/rootline-app/iphone.html",
+      "permanent": false
     },
     {
       "source": "/rootline-app/",
-      "has": [{"type":"header","key":"user-agent","value":".*iPhone.*"}],
-      "destination": "/rootline-app/iphone.html"
+      "destination": "/rootline-app/iphone.html",
+      "permanent": false
     }
   ],
   "headers": [
@@ -25,6 +23,18 @@
         {"key":"X-Content-Type-Options","value":"nosniff"},
         {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
         {"key":"Permissions-Policy","value":"camera=(), microphone=(), geolocation=()"}
+      ]
+    },
+    {
+      "source": "/rootline-app/iphone.html",
+      "headers": [
+        {"key":"Cache-Control","value":"no-store, max-age=0"}
+      ]
+    },
+    {
+      "source": "/rootline-app/index.html",
+      "headers": [
+        {"key":"Cache-Control","value":"no-store, max-age=0"}
       ]
     }
   ]
