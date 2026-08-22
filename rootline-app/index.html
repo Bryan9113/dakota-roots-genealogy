@@ -3,71 +3,106 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#070707">
+<meta name="theme-color" content="#080909">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="rootline-build" content="golden-tree-2026-08-20">
 <title>Rootline AI Genealogy</title>
-<style>
-:root{--bg:#070707;--panel:#10100f;--panel2:#171410;--gold:#e5c177;--gold2:#b8893e;--cream:#f4e8cf;--muted:#9b9182;--line:rgba(229,193,119,.16);--purple:#a98aff;--good:#75e6ad;--bad:#ff9ba4}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit;color:inherit}.hidden{display:none!important}.auth{position:relative;isolation:isolate;overflow:hidden;min-height:100svh;display:grid;grid-template-columns:1.08fr .92fr;background:radial-gradient(circle at 78% 20%,rgba(126,87,210,.18),transparent 30%),radial-gradient(circle at 20% 75%,rgba(229,193,119,.10),transparent 30%),#070707}.auth::before{content:"";position:absolute;z-index:-2;inset:-5% 24% -10% 16%;background:url('golden-tree.svg') center/contain no-repeat;opacity:.48;filter:drop-shadow(0 0 22px rgba(229,193,119,.10));pointer-events:none}.auth::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(7,7,7,.98) 0%,rgba(7,7,7,.72) 34%,rgba(7,7,7,.22) 58%,rgba(7,7,7,.86) 76%,rgba(7,7,7,.98) 100%);pointer-events:none}.brandpane,.loginpane{position:relative;z-index:1}.brandpane{padding:52px 54px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(229,193,119,.11)}.logo{display:flex;align-items:center;gap:12px;font:30px Georgia,serif;color:var(--gold);letter-spacing:.02em}.logo-mark{width:44px;height:44px;flex:0 0 auto;background:url('golden-tree.svg') center/170% no-repeat;border:1px solid rgba(229,193,119,.22);border-radius:50%;box-shadow:0 0 30px rgba(229,193,119,.08)}.hero{max-width:690px}.hero h1{font-size:clamp(48px,6vw,78px);line-height:.98;margin:0 0 22px;max-width:700px;text-shadow:0 2px 20px rgba(0,0,0,.5)}.hero h1 em{font-style:normal;background:linear-gradient(90deg,#f0ca73 5%,#d8a959 45%,#a98aff 92%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:#b5aa9b;line-height:1.68;max-width:610px;font-size:14px}.ornament{display:flex;align-items:center;gap:10px;margin:22px 0;color:var(--gold)}.ornament::before,.ornament::after{content:"";height:1px;background:linear-gradient(90deg,rgba(229,193,119,0),rgba(229,193,119,.6));width:90px}.ornament::after{transform:scaleX(-1)}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.chip{border:1px solid rgba(229,193,119,.25);background:rgba(10,9,8,.54);backdrop-filter:blur(8px);border-radius:999px;padding:8px 11px;font-size:11px;color:#d6c6ad}.loginpane{display:grid;place-items:center;padding:26px}.loginbox{width:min(448px,100%);border:1px solid rgba(229,193,119,.20);background:linear-gradient(180deg,rgba(18,16,14,.94),rgba(8,8,8,.96));border-radius:28px;padding:30px;box-shadow:0 32px 100px rgba(0,0,0,.58),0 0 42px rgba(169,138,255,.08);backdrop-filter:blur(18px)}.lockcrest{width:60px;height:60px;margin:0 auto 18px;border:1px solid rgba(229,193,119,.56);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:25px;box-shadow:0 0 30px rgba(169,138,255,.14)}.eyebrow{font-size:10px;letter-spacing:.15em;font-weight:900;color:var(--purple);text-transform:uppercase}.loginbox .eyebrow{text-align:center}.loginbox h2{font:36px Georgia,serif;margin:8px 0 6px;text-align:center}.loginbox .sub{text-align:center}.sub{font-size:12px;color:var(--muted);line-height:1.55}.field{margin-top:15px}.field label{display:block;font-size:10px;color:#aaa094;margin-bottom:6px;font-weight:800}.field input{width:100%;height:52px;border:1px solid rgba(229,193,119,.14);background:#0e0e0d;border-radius:13px;padding:0 14px;outline:none}.field input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(229,193,119,.08)}.primary,.ghost{border-radius:12px;padding:12px 14px;font-weight:850;cursor:pointer}.primary{border:0;background:linear-gradient(135deg,#f0cf86,#b68a3f);color:#171007;box-shadow:0 8px 28px rgba(182,138,63,.14)}.ghost{border:1px solid var(--line);background:#11100f}.wide{width:100%;margin-top:18px;height:50px}.remember{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:11px;color:var(--muted)}.msg{min-height:18px;color:var(--bad);font-size:11px;margin-top:10px}.note{margin-top:15px;padding:11px;border:1px solid var(--line);border-radius:12px;font-size:10px;color:#80766b;line-height:1.5;background:rgba(0,0,0,.16)}.app{position:relative;min-height:100svh;padding-bottom:80px;background:radial-gradient(circle at 80% 0,rgba(126,87,210,.12),transparent 27%),#070707;overflow:hidden}.app::before{content:"";position:fixed;z-index:0;right:-18vw;top:62px;width:min(760px,72vw);height:760px;background:url('golden-tree.svg') center/contain no-repeat;opacity:.055;pointer-events:none}.top,.main,.bottom{position:relative;z-index:1}.top{height:72px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:rgba(7,7,7,.91);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.top .logo{font-size:23px}.top .logo-mark{width:34px;height:34px}.owner{border:1px solid rgba(169,138,255,.28);border-radius:999px;padding:7px 10px;font-size:9px;color:#cfbdff}.main{max-width:1180px;margin:auto;padding:22px 15px}.welcome{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:8px 0 18px}.welcome h1{font:36px Georgia,serif;margin:5px 0}.welcome p{margin:0;color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(21,19,15,.94),rgba(11,11,10,.95));padding:15px;backdrop-filter:blur(10px)}.heroai{grid-column:span 2;min-height:190px;background:radial-gradient(circle at 88% 20%,rgba(169,138,255,.18),transparent 36%),linear-gradient(145deg,#1a1510,#0a0a09)}.heroai h2{font:30px Georgia,serif;margin:8px 0}.heroai p{font-size:11px;color:var(--muted);line-height:1.55;max-width:520px}.kpi b{display:block;font-size:28px;color:var(--gold)}.kpi span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.section{margin-top:17px}.section h3{font:23px Georgia,serif;margin:0 0 10px}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tool{border:1px solid var(--line);border-radius:16px;background:rgba(16,15,13,.94);padding:14px;min-height:118px}.tool b{display:block;font-size:13px}.tool p{font-size:10px;line-height:1.5;color:var(--muted)}.view{display:none}.view.active{display:block}.treebox{border:1px solid var(--line);border-radius:20px;background:rgba(15,14,13,.94);padding:18px}.treehead{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.treehead h2{font:30px Georgia,serif;margin:3px 0}.treehead p{color:var(--muted);font-size:11px;line-height:1.55}.status{display:inline-block;border:1px solid rgba(117,230,173,.25);border-radius:999px;padding:6px 8px;color:var(--good);font-size:9px}.people{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.person{border:1px solid var(--line);border-radius:14px;background:#14120f;padding:12px}.person b{font:16px Georgia,serif}.person small{display:block;color:var(--muted);font-size:9px;margin-top:5px}.researchgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.researchcard{border:1px solid var(--line);border-radius:17px;padding:15px;background:rgba(16,15,13,.94)}.researchcard h3{font:20px Georgia,serif;margin:0 0 7px}.researchcard p{font-size:10px;color:var(--muted);line-height:1.5}.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:rgba(7,7,7,.95);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:30;display:flex;justify-content:center}.nav{width:min(720px,100%);display:grid;grid-template-columns:repeat(5,1fr)}.nav button{border:0;background:transparent;color:#776e63;font-size:9px}.nav button.active{color:var(--gold)}
-@media(max-width:850px){.auth{display:block;background:radial-gradient(circle at 70% 8%,rgba(126,87,210,.16),transparent 30%),#070707}.auth::before{inset:-4% -25% 10% -22%;background-size:cover;opacity:.30;background-position:52% 34%}.auth::after{background:linear-gradient(180deg,rgba(7,7,7,.38),rgba(7,7,7,.76) 42%,rgba(7,7,7,.98) 82%)}.brandpane{display:none}.loginpane{min-height:100svh;padding:max(24px,env(safe-area-inset-top)) 16px max(30px,env(safe-area-inset-bottom));align-items:end}.loginbox{margin-bottom:12px;background:linear-gradient(180deg,rgba(16,14,12,.90),rgba(7,7,7,.96));box-shadow:0 24px 70px rgba(0,0,0,.62),0 0 36px rgba(169,138,255,.08)}.grid{grid-template-columns:repeat(2,1fr)}.heroai{grid-column:span 2}.tools,.people{grid-template-columns:1fr 1fr}.welcome h1{font-size:30px}}
-@media(max-width:520px){.loginbox{padding:24px 20px;border-radius:23px}.lockcrest{width:54px;height:54px}.loginbox h2{font-size:32px}.tools,.people,.researchgrid{grid-template-columns:1fr}.treehead{display:block}.top{height:66px}.top .logo{font-size:18px;gap:8px}.top .logo-mark{width:30px;height:30px}.welcome{align-items:flex-start}.welcome .ghost{padding:9px 10px;font-size:10px}}
-</style>
-<link rel="stylesheet" href="mobile-tree-override.css">
+<link rel="stylesheet" href="app.css?v=2">
 </head>
 <body>
-<section id="auth" class="auth">
-  <div class="brandpane">
-    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><span>Rootline AI Genealogy</span></div>
+<div class="ambient a1"></div><div class="ambient a2"></div>
+<header class="topbar">
+  <button class="brand" data-tab="ai" aria-label="Rootline home"><span class="brand-tree">⌁</span><span><b>Rootline</b><small>AI GENEALOGY</small></span></button>
+  <button id="personPill" class="person-pill"><span class="dot"></span><span id="personPillText">Loading tree…</span><span>⌄</span></button>
+</header>
+
+<main class="shell">
+  <section id="ai" class="screen active">
     <div class="hero">
-      <div class="eyebrow">Private family research OS</div>
-      <h1>Your Family.<br>Our Mission.<br><em>AI-Powered.</em></h1>
-      <div class="ornament">◇</div>
-      <p>Evidence-first genealogy, family-tree research, DNA, military history, relationship paths, records, hypotheses and publishing in one private workspace.</p>
-      <div class="chips"><span class="chip">Owner portal</span><span class="chip">Evidence confidence</span><span class="chip">2,284-person master tree</span><span class="chip">Mobile ready</span></div>
+      <div class="hero-mark">✦ ROOTLINE INTELLIGENCE</div>
+      <h1>Ask your family tree<br><em>anything.</em></h1>
+      <p>Research ancestors, analyze records, test theories, follow evidence and build a documented family story with AI.</p>
+      <div class="hero-badges"><span>2,284-person master tree</span><span>Evidence-first</span><span>AI + live web research</span></div>
     </div>
-    <div class="sub">Rootline owner build • Golden Tree Edition • August 20, 2026</div>
-  </div>
-  <div class="loginpane">
-    <div class="loginbox">
-      <div class="lockcrest">⌾</div>
-      <div class="eyebrow">Secure owner access</div>
-      <h2>Welcome back</h2>
-      <p class="sub">Sign in to open your private Rootline command center.</p>
-      <form id="login">
-        <div class="field"><label>Username</label><input id="user" autocomplete="username" autocapitalize="none" required></div>
-        <div class="field"><label>Password</label><input id="pass" type="password" autocomplete="current-password" required></div>
-        <label class="remember"><input id="remember" type="checkbox" checked> Keep me signed in</label>
-        <button id="loginBtn" class="primary wide">Sign in to Rootline →</button>
-        <div id="loginMsg" class="msg"></div>
+
+    <div class="context-card">
+      <div><small>RESEARCHING</small><strong id="selectedName">Your family</strong><span id="selectedMeta">Master tree loading…</span></div>
+      <button id="changePerson">Change</button>
+    </div>
+
+    <div class="quick-grid">
+      <button class="quick" data-tool="record"><span>▤</span><b>Analyze record</b><small>Photo, scan or PDF</small></button>
+      <button class="quick" data-tool="records"><span>⌕</span><b>Find records</b><small>Live web research</small></button>
+      <button class="quick" data-tool="audit"><span>◇</span><b>Audit evidence</b><small>Proof & conflicts</small></button>
+      <button class="quick" data-tool="gaps"><span>◷</span><b>Find gaps</b><small>What to search next</small></button>
+    </div>
+
+    <section class="chat-card">
+      <div class="chat-head"><div><span class="ai-orb">✦</span><div><b>Rootline AI</b><small id="modelStatus">AI ready to connect</small></div></div><button id="clearChat">Clear</button></div>
+      <div id="messages" class="messages">
+        <article class="message ai-message"><div class="msg-mark">✦</div><div><p>Select an ancestor or ask me a genealogy question. I can reason over your tree, analyze uploaded evidence, or run live web research.</p></div></article>
+      </div>
+      <div id="attachmentBar" class="attachment-bar hidden"><span id="attachmentName"></span><button id="removeAttachment">×</button></div>
+      <form id="composer" class="composer">
+        <textarea id="prompt" rows="1" placeholder="Ask Rootline AI about your family…"></textarea>
+        <div class="compose-actions">
+          <label class="icon-btn" for="attachmentInput" title="Attach record">＋</label>
+          <button class="icon-btn" id="micBtn" type="button" title="Speak">◉</button>
+          <label class="web-switch"><input id="webMode" type="checkbox"><span></span><b>Deep web</b></label>
+          <button id="sendBtn" class="send" type="submit">↑</button>
+        </div>
       </form>
-      <div class="note">Rootline stores no readable owner password. The owner password is checked against the existing one-way SHA-256 verifier.</div>
+      <input id="attachmentInput" type="file" accept="image/*,.pdf,.txt,text/plain,application/pdf" hidden>
+    </section>
+  </section>
+
+  <section id="tree" class="screen">
+    <div class="page-head"><div><small>MASTER FAMILY TREE</small><h2>People</h2></div><span id="treeCount">Loading…</span></div>
+    <label class="searchbox">⌕<input id="treeSearch" placeholder="Search the master tree"></label>
+    <div id="personDetail" class="person-detail"></div>
+    <div id="peopleList" class="people-list"></div>
+  </section>
+
+  <section id="records" class="screen">
+    <div class="page-head"><div><small>AI DOCUMENT ANALYZER</small><h2>Evidence</h2></div><button id="uploadRecord" class="mini-primary">Upload</button></div>
+    <div class="evidence-rule"><b>AI never changes your tree automatically.</b><span>Every finding stays a lead until you review the evidence.</span></div>
+    <div class="record-drop" id="recordDrop"><span>▤</span><h3>Drop in a record</h3><p>Census, vital record, obituary, military file, newspaper clipping, church record, photo or PDF.</p><button id="recordChoose">Choose file</button></div>
+    <div id="recordCurrent" class="record-current hidden"></div>
+    <div class="section-label"><b>Research inbox</b><span id="inboxCount">0 items</span></div>
+    <div id="inboxList" class="inbox-list"></div>
+  </section>
+
+  <section id="lab" class="screen">
+    <div class="page-head"><div><small>ROOTLINE RESEARCH OS</small><h2>AI Lab</h2></div><span>22 tools</span></div>
+    <p class="page-copy">Every tool runs through Rootline AI with the selected person and their known evidence in context.</p>
+    <div id="toolGrid" class="tool-grid"></div>
+  </section>
+
+  <section id="saved" class="screen">
+    <div class="page-head"><div><small>OWNER WORKSPACE</small><h2>Saved research</h2></div><span>Private</span></div>
+    <div class="saved-grid">
+      <button id="watchCurrent" class="saved-card"><span>◌</span><div><b>Research watchlist</b><small id="watchCount">0 people</small></div></button>
+      <button id="newNote" class="saved-card"><span>✎</span><div><b>Research notes</b><small id="noteCount">0 notes</small></div></button>
+      <button id="exportBackup" class="saved-card"><span>↺</span><div><b>Export backup</b><small>Notes, inbox & watchlist</small></div></button>
+      <label class="saved-card import-card" for="backupInput"><span>⇩</span><div><b>Import backup</b><small>Restore saved research</small></div></label>
+      <input id="backupInput" type="file" accept="application/json,.json" hidden>
     </div>
-  </div>
-</section>
-<section id="app" class="app hidden">
-  <header class="top"><div class="logo"><span class="logo-mark" aria-hidden="true"></span><span>Rootline AI Genealogy</span></div><div class="owner">OWNER • BRYAN9113</div></header>
-  <main class="main">
-    <div id="home" class="view active">
-      <div class="welcome"><div><div class="eyebrow">Rootline command center</div><h1>Your family archive is open.</h1><p>The portal now loads independently from the master-tree file.</p></div><button class="ghost" onclick="logout()">Sign out</button></div>
-      <section class="grid"><div class="card heroai"><div class="eyebrow">✦ Rootline AI</div><h2>Solve this person</h2><p>Research an ancestor, compare evidence, preserve competing hypotheses and decide what belongs in the proven tree.</p><button class="primary" onclick="showView('research')">Open AI Research</button></div><div class="card kpi"><b>2,284</b><span>People preserved</span></div><div class="card kpi"><b>1,161</b><span>Families preserved</span></div><div class="card kpi"><b>5</b><span>Evidence levels</span></div><div class="card kpi"><b>V8</b><span>Stable owner shell</span></div></section>
-      <section class="section"><h3>Research OS</h3><div class="tools"><div class="tool"><b>🧬 DNA Workspace</b><p>Track shared cM, branch hypotheses and match clusters.</p><button class="ghost" onclick="showView('research')">Open</button></div><div class="tool"><b>⚑ Military History</b><p>Ranks, units, conflicts, service records and discharge evidence.</p><button class="ghost" onclick="showView('research')">Open</button></div><div class="tool"><b>⚖ Evidence Matrix</b><p>Proven, Strong, Likely, Possible and Rejected routes stay visibly separate.</p><button class="ghost" onclick="showView('evidence')">Open</button></div><div class="tool"><b>🕰 Smart Timeline</b><p>Find missing years, migrations and next-record opportunities.</p><button class="ghost" onclick="showView('research')">Open</button></div><div class="tool"><b>🔗 Relationship Finder</b><p>Trace how two people connect through the tree.</p><button class="ghost" onclick="showView('tree')">Open</button></div><div class="tool"><b>📖 Publishing</b><p>Family books, source reports and documentary planning.</p><button class="ghost" onclick="showView('more')">Open</button></div></div></section>
-    </div>
-    <div id="tree" class="view"><div class="welcome"><div><div class="eyebrow">Master tree</div><h1>Family Tree</h1><p>The master dataset is preserved separately so a tree import can never take the whole website offline again.</p></div><button class="ghost" onclick="showView('home')">Back home</button></div><div class="treebox"><div class="treehead"><div><span class="status">MASTER TREE PRESERVED</span><h2>2,284 people • 1,161 families</h2><p>The full GEDCOM remains preserved in the project. The stable portal is intentionally independent from that data file while the interactive renderer is being reattached.</p></div></div><div class="people"><div class="person"><b>Bryan Olson</b><small>Home person • owner tree</small></div><div class="person"><b>Tony Cooprider</b><small>Paternal line</small></div><div class="person"><b>Jerry Wayne Cooprider</b><small>Cooprider branch</small></div><div class="person"><b>Edna Alberta Francis</b><small>Francis branch</small></div><div class="person"><b>Juanita Theresa Doke</b><small>Doke / Ohmann research</small></div><div class="person"><b>Jeanne Catherine Doke</b><small>Landis / Doke research</small></div></div></div></div>
-    <div id="research" class="view"><div class="welcome"><div><div class="eyebrow">AI research</div><h1>Research Workspace</h1><p>Keep research leads and proof status separate from confirmed family-tree facts.</p></div><button class="ghost" onclick="showView('home')">Back home</button></div><div class="researchgrid"><div class="researchcard"><h3>Deep ancestor research</h3><p>Records, newspapers, obituaries, census, military, probate and migration evidence.</p></div><div class="researchcard"><h3>DNA investigations</h3><p>Shared matches, branch assignment and unknown-parent problems.</p></div><div class="researchcard"><h3>Famous connections</h3><p>Preserve rejected routes and only promote relationships that survive evidence review.</p></div><div class="researchcard"><h3>Research inbox</h3><p>New lead → candidate → verified or rejected.</p></div></div></div>
-    <div id="evidence" class="view"><div class="welcome"><div><div class="eyebrow">Evidence control</div><h1>Confidence Matrix</h1><p>Every important claim should show exactly how certain it is.</p></div><button class="ghost" onclick="showView('home')">Back home</button></div><div class="researchgrid"><div class="researchcard"><h3 style="color:#75e6ad">Proven</h3><p>Supported by direct documentary evidence or equivalent high-confidence proof.</p></div><div class="researchcard"><h3 style="color:#9be7bd">Strong</h3><p>Multiple independent pieces align with no meaningful conflict.</p></div><div class="researchcard"><h3 style="color:#f0cf86">Likely / Possible</h3><p>Useful working hypotheses that still require specific proof.</p></div><div class="researchcard"><h3 style="color:#ff9ba4">Rejected</h3><p>Routes shown to be wrong remain documented so they are not accidentally reused.</p></div></div></div>
-    <div id="more" class="view"><div class="welcome"><div><div class="eyebrow">Owner portal</div><h1>Rootline Controls</h1><p>Backup, publishing, member access and business controls stay owner-managed.</p></div><button class="ghost" onclick="logout()">Sign out</button></div><div class="researchgrid"><div class="researchcard"><h3>Owner access</h3><p>Username: Bryan9113. No readable password is stored in this page.</p></div><div class="researchcard"><h3>Backup & export</h3><p>GEDCOM and archival backup remain part of the Rootline roadmap and preserved project files.</p></div><div class="researchcard"><h3>Family publishing</h3><p>Generate books, research packets and relationship reports from verified evidence.</p></div><div class="researchcard"><h3>Stable deployment</h3><p>This build is a direct page and cannot fail because a compressed tree payload refuses to decode.</p></div></div></div>
-  </main>
-  <nav class="bottom"><div class="nav"><button data-view="home" class="active" onclick="showView('home')">⌂<br>Home</button><button data-view="tree" onclick="showView('tree')">♧<br>Tree</button><button data-view="research" onclick="showView('research')">✦<br>Research</button><button data-view="evidence" onclick="showView('evidence')">⚖<br>Evidence</button><button data-view="more" onclick="showView('more')">☰<br>More</button></div></nav>
-</section>
-<script>
-const OWNER='Bryan9113',HASH='cf389a02741662087cfe2b6056945ed382af880911cecdef2f3694328e5c7dd8';
-const $=s=>document.querySelector(s);
-async function sha(v){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-function enter(){document.getElementById('auth').classList.add('hidden');document.getElementById('app').classList.remove('hidden');showView('home')}
-function logout(){sessionStorage.removeItem('rootlineOwnerSession');localStorage.removeItem('rootlineOwnerRemember');document.getElementById('app').classList.add('hidden');document.getElementById('auth').classList.remove('hidden')}
-function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id)?.classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'})}
-document.getElementById('login').addEventListener('submit',async e=>{e.preventDefault();const m=$('#loginMsg'),b=$('#loginBtn');m.textContent='';b.disabled=true;b.textContent='Signing in…';try{const ok=$('#user').value.trim()===OWNER&&await sha($('#pass').value)===HASH;if(!ok)throw new Error();sessionStorage.setItem('rootlineOwnerSession','1');if($('#remember').checked)localStorage.setItem('rootlineOwnerRemember','1');enter();$('#pass').value=''}catch{m.textContent='Invalid username or password.'}finally{b.disabled=false;b.textContent='Sign in to Rootline →'}});
-if(sessionStorage.getItem('rootlineOwnerSession')==='1'||localStorage.getItem('rootlineOwnerRemember')==='1')enter();
-</script>
+    <div class="section-label"><b>Notes</b><span>Local owner workspace</span></div><div id="notesList" class="notes-list"></div>
+    <div class="section-label"><b>Watchlist</b><span>Unresolved people</span></div><div id="watchList" class="watch-list"></div>
+    <div class="proof-card"><small>EVIDENCE STATES</small><div><span class="proof direct">Proven / Direct</span><span class="proof strong">Strong</span><span class="proof possible">Possible</span><span class="proof unverified">Unverified</span><span class="proof rejected">Rejected</span></div></div>
+  </section>
+</main>
+
+<nav class="bottom-nav">
+  <button data-tab="ai" class="active"><span>✦</span><b>AI</b></button>
+  <button data-tab="tree"><span>♧</span><b>Tree</b></button>
+  <button data-tab="records"><span>▤</span><b>Records</b></button>
+  <button data-tab="lab"><span>⌘</span><b>AI Lab</b></button>
+  <button data-tab="saved"><span>☰</span><b>Saved</b></button>
+</nav>
+
+<div id="personModal" class="modal hidden"><div class="modal-card"><div class="modal-head"><div><small>SELECT RESEARCH PERSON</small><h3>Who are we solving?</h3></div><button data-close="personModal">×</button></div><label class="searchbox">⌕<input id="modalSearch" placeholder="Search names"></label><div id="modalPeople" class="modal-people"></div></div></div>
+<div id="noteModal" class="modal hidden"><div class="modal-card small-modal"><div class="modal-head"><div><small>RESEARCH NOTE</small><h3>Save a clue</h3></div><button data-close="noteModal">×</button></div><textarea id="noteText" class="note-input" placeholder="Clue, question, family story, follow-up…"></textarea><button id="saveNote" class="primary-wide">Save note</button></div></div>
+<div id="toast" class="toast hidden"></div>
+<script src="app.js?v=2"></script>
 </body>
 </html>
