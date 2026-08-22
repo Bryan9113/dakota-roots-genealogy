@@ -63,7 +63,18 @@ async function runModel({ model, messages, reasoning }) {
 }
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'POST required' });
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      ok: true,
+      service: 'Rootline AI Genealogy',
+      endpoint: 'online',
+      gatewayAuthDetected: Boolean(process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN),
+      reasoning: ['openai/gpt-5.2', 'openai/gpt-4o-mini'],
+      webResearch: ['perplexity/sonar-pro', 'perplexity/sonar'],
+      evidenceFirst: true,
+    });
+  }
+  if (req.method !== 'POST') return res.status(405).json({ error: 'GET or POST required' });
   try {
     const body = req.body || {};
     const prompt = String(body.prompt || '').trim();
@@ -118,7 +129,7 @@ export default async function handler(req, res) {
     return res.status(500).json({
       error: 'Rootline AI could not complete this request.',
       detail: err?.message || String(err),
-      setupHint: 'If this is the first AI request on this Vercel project, enable Vercel AI Gateway/OIDC or add AI_GATEWAY_API_KEY, then redeploy.',
+      setupHint: 'The website and AI endpoint are deployed. If model calls are not authorized yet, enable Vercel AI Gateway/OIDC or add AI_GATEWAY_API_KEY to this Vercel project, then redeploy.',
     });
   }
 }
