@@ -1,0 +1,3 @@
+Force fresh Rootline deployment from current main build.
+Triggered: 2026-08-21 20:55 America/Chicago
+Expected entry: /rootline-app/iphone.html
