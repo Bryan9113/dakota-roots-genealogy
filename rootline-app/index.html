@@ -37,7 +37,7 @@
     </div>
 
     <section class="chat-card">
-      <div class="chat-head"><div><span class="ai-orb">✦</span><div><b>Rootline AI</b><small id="modelStatus">AI ready to connect</small></div></div><button id="clearChat">Clear</button></div>
+      <div class="chat-head"><div><span class="ai-orb">✦</span><div><b>Rootline AI</b><small id="modelStatus">Checking AI engine…</small></div></div><button id="clearChat">Clear</button></div>
       <div id="messages" class="messages">
         <article class="message ai-message"><div class="msg-mark">✦</div><div><p>Select an ancestor or ask me a genealogy question. I can reason over your tree, analyze uploaded evidence, or run live web research.</p></div></article>
       </div>
@@ -103,6 +103,8 @@
 <div id="personModal" class="modal hidden"><div class="modal-card"><div class="modal-head"><div><small>SELECT RESEARCH PERSON</small><h3>Who are we solving?</h3></div><button data-close="personModal">×</button></div><label class="searchbox">⌕<input id="modalSearch" placeholder="Search names"></label><div id="modalPeople" class="modal-people"></div></div></div>
 <div id="noteModal" class="modal hidden"><div class="modal-card small-modal"><div class="modal-head"><div><small>RESEARCH NOTE</small><h3>Save a clue</h3></div><button data-close="noteModal">×</button></div><textarea id="noteText" class="note-input" placeholder="Clue, question, family story, follow-up…"></textarea><button id="saveNote" class="primary-wide">Save note</button></div></div>
 <div id="toast" class="toast hidden"></div>
+<script src="legacy-ai-context.js?v=3"></script>
 <script src="app.js?v=2"></script>
+<script src="ai-health.js?v=3"></script>
 </body>
 </html>
