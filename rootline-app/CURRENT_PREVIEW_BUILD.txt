@@ -1,0 +1,3 @@
+Rootline repaired preview build
+Server-side master GEDCOM decode enabled
+Build date: 2026-08-20
