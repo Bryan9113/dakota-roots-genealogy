@@ -1,41 +1,24 @@
 {
+  "rewrites": [
+    {"source": "/", "destination": "/rootline-app/index.html"},
+    {"source": "/rootline-app", "destination": "/rootline-app/index.html"},
+    {"source": "/rootline-app/", "destination": "/rootline-app/index.html"}
+  ],
   "redirects": [
-    {
-      "source": "/Dakota-Roots-Genealogy.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/rootline-app",
-      "destination": "/rootline-app/iphone.html",
-      "permanent": false
-    },
-    {
-      "source": "/rootline-app/",
-      "destination": "/rootline-app/iphone.html",
-      "permanent": false
-    }
+    {"source": "/Dakota-Roots-Genealogy.html", "destination": "/", "permanent": false}
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {"key":"X-Content-Type-Options","value":"nosniff"},
-        {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
-        {"key":"Permissions-Policy","value":"camera=(), microphone=(), geolocation=()"}
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+        {"key": "Permissions-Policy", "value": "camera=(self), microphone=(self), geolocation=()"}
       ]
     },
     {
-      "source": "/rootline-app/iphone.html",
-      "headers": [
-        {"key":"Cache-Control","value":"no-store, max-age=0"}
-      ]
-    },
-    {
-      "source": "/rootline-app/index.html",
-      "headers": [
-        {"key":"Cache-Control","value":"no-store, max-age=0"}
-      ]
+      "source": "/rootline-app/(.*)",
+      "headers": [{"key": "Cache-Control", "value": "no-store, max-age=0"}]
     }
   ]
 }
